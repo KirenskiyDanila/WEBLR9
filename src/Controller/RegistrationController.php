@@ -23,6 +23,8 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setApiToken(rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '='));
+            $user->setRoles(['ROLE_USER']);
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(

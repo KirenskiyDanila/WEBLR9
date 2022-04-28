@@ -22,13 +22,23 @@
                     </a>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                            <li><a href="{{ path('archive_page', {page: 1})}}" class="nav-link px-2 link-secondary h5">Архив новостей</a></li>
-                            <li><a href="{{ path('app_main') }}" class="nav-link px-2 link-secondary h5">Главная страница</a></li>
+                            <li><a href="{{ path('archive_page', {page: 1})}}" class="nav-link px-2 link-secondary h6">Архив новостей</a></li>
+                            <li><a href="{{ path('app_main') }}" class="nav-link px-2 link-secondary h6">Главная страница</a></li>
+                            <li><a id="getToken" hidden>{{ app.user.apiToken }}</a></li>
+                            <script>
+                                function myFunction() {
+                                    var copyText = document.getElementById("getToken").textContent;
+                                    navigator.clipboard.writeText(copyText);
+                                    alert("Ваш API скопирован!");
+                                }
+                            </script>
+                            <li><a href="#" onclick="myFunction()" class="nav-link px-2 link-secondary h6">apiToken</a></li>
+                            <li><a href="{{ path('api_entrypoint') }}" class="nav-link px-2 link-secondary h6">Перейти к API</a></li>
                             {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('admin') }}" class="nav-link px-2 link-secondary h5">Административная панель</a></li>
+                            <li><a href="{{ path('admin') }}" class="nav-link px-2 link-secondary h6">Административная панель</a></li>
                             {% endif %}
-                            <li><a href="#" class="nav-link px-2 link-secondary h5">Приветствуем, {{ app.user.name }}</a></li>
-                            <li><a href="{{ path('app_logout') }}" class="nav-link px-2 link-secondary h5">Выход</a></li>
+                            <li><a href="#" class="nav-link px-2 link-secondary h6">Приветствуем, {{ app.user.name }}</a></li>
+                            <li><a href="{{ path('app_logout') }}" class="nav-link px-2 link-secondary h6">Выход</a></li>
                         </ul>
                     {% else %}
                         <ul class="nav col-10 col-md-auto mb-2 justify-content-between mb-md-0">

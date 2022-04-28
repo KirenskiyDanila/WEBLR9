@@ -67,10 +67,11 @@ class MainController extends AbstractController
 
         $name = $session->get('name') ?? null;
 
-        if ($news->getAuthor()->getId() != $this->container->get('security.token_storage')->getToken()->getUser()->getId()) {
-            $news->setViews($news->getViews() + 1);
+        if ($this->container->get('security.token_storage')->getToken() != null) {
+            if ($news->getAuthor()->getId() != $this->container->get('security.token_storage')->getToken()->getUser()->getId()) {
+                $news->setViews($news->getViews() + 1);
+            }
         }
-
         $comments = $doctrine->getRepository(Comment::class)->getCommentsById($news->getId());
 
         $comment = new Comment();

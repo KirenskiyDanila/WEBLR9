@@ -11,9 +11,10 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-#[UniqueEntity(fields: ['name'], message: 'There is already an account with this name')]
+#[UniqueEntity(fields: ['name', 'apiToken'],  message: 'There is already an account with this name')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -44,6 +45,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column(type: 'string', length: 25, unique: true)]
     private $phone;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $apiToken;
 
     public function __construct()
     {
@@ -190,6 +194,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getApiToken(): ?string
+    {
+        return $this->apiToken;
+    }
+
+    public function setApiToken(string $apiToken): self
+    {
+        $this->apiToken = $apiToken;
 
         return $this;
     }
