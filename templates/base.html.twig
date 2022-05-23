@@ -35,7 +35,8 @@
                             <li><a href="#" onclick="myFunction()" class="nav-link px-2 link-secondary h6">apiToken</a></li>
                             <li><a href="{{ path('api_entrypoint') }}" class="nav-link px-2 link-secondary h6">Перейти к API</a></li>
                             {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('admin') }}" class="nav-link px-2 link-secondary h6">Административная панель</a></li>
+                                <li><a href="{{ path('admin') }}" class="nav-link px-2 link-secondary h6">Админ панель</a></li>
+                                <li><a href="{{ path('add_news') }}" class="nav-link px-2 link-secondary h6">Добавить новость</a></li>
                             {% endif %}
                             <li><a href="#" class="nav-link px-2 link-secondary h6">Приветствуем, {{ app.user.name }}</a></li>
                             <li><a href="{{ path('app_logout') }}" class="nav-link px-2 link-secondary h6">Выход</a></li>

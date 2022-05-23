@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 9; $i++) {
 
             $user = new User();
-            $user->setName("Пользователь номер " . ($i + 1));
+            $user->setName("User" . ($i + 1));
             $user->setPassword(password_hash("password" . ($i + 1), PASSWORD_DEFAULT));
             $user->setPhone("+7919240121" . ($i + 1));
             $manager->persist($user);

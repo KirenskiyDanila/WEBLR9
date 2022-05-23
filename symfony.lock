@@ -13,6 +13,18 @@
             "./src/Entity/.gitignore"
         ]
     },
+    "dama/doctrine-test-bundle": {
+        "version": "7.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "4.0",
+            "ref": "56eaa387b5e48ebcc7c95a893b47dfa1ad51449c"
+        },
+        "files": [
+            "./config/packages/test/dama_doctrine_test_bundle.yaml"
+        ]
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -138,6 +150,12 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "paragonie/random_compat": {
+        "version": "v9.99.100"
+    },
+    "paragonie/sodium_compat": {
+        "version": "v1.17.1"
     },
     "phar-io/manifest": {
         "version": "2.0.3"
@@ -360,6 +378,12 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/http-client": {
+        "version": "v6.0.8"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v3.0.1"
     },
     "symfony/http-foundation": {
         "version": "v6.0.7"

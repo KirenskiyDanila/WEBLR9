@@ -20,7 +20,7 @@ final class Version20220419170853 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP SEQUENCE real_user_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE IF EXISTS real_user_id_seq CASCADE');
         $this->addSql('CREATE TABLE comment (id INT NOT NULL, author_id INT NOT NULL, test VARCHAR(255) NOT NULL, date DATE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_9474526CF675F31B ON comment (author_id)');
         $this->addSql('CREATE TABLE news (id INT NOT NULL, author_id INT NOT NULL, name VARCHAR(255) NOT NULL, annotation VARCHAR(255) NOT NULL, date DATE NOT NULL, text TEXT NOT NULL, views INT NOT NULL, PRIMARY KEY(id))');
